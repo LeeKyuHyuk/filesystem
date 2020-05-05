@@ -1,6 +1,7 @@
 SRCS = $(wildcard *.c)
 OBJS = $(SRCS:.c=.o)
 CFLAGS = -O2
+LDFLAGS = -lreadline
 
 all: clean fat32
 
@@ -8,7 +9,7 @@ all: clean fat32
 	gcc $(CFLAGS) -c $< -o $@
 
 fat32: $(OBJS)
-	gcc $(OBJS) -o fat32
+	gcc $(OBJS) -o fat32 $(LDFLAGS)
 
 clean:
 	rm fat32 *.o >/dev/null 2>/dev/null || true
